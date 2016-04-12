@@ -1,3 +1,4 @@
+// Utility package for juggling leapseconds
 package leap
 
 import "time"
@@ -43,7 +44,7 @@ func NumLeaps(t time.Time) int {
 	return 0
 }
 
-// Get the number of leapseconds that occured between two times.
+// Get the number of leap seconds that occured between two times.
 func LeapDiff(t1 time.Time, t2 time.Time) int {
 	n := LeapCount(t1) - LeapCount(t2)
 	if n < 0 {
