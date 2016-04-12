@@ -34,19 +34,19 @@ var Seconds = []int64{
 }
 
 // Get the number of leap seconds that occured before this time.
-func NumLeaps(t time.Time) int {
+func NumLeaps(t time.Time) time.Duration {
 	u := t.Unix()
 	for i, s := range Seconds {
 		if u > s {
-			return len(Seconds) - i
+			return time.Duration(len(Seconds)-i) * time.Second
 		}
 	}
 	return 0
 }
 
 // Get the number of leap seconds that occured between two times.
-func LeapDiff(t1 time.Time, t2 time.Time) int {
-	n := LeapCount(t1) - LeapCount(t2)
+func LeapDiff(t1 time.Time, t2 time.Time) time.Duration {
+	n := NumLeaps(t1) - NumLeaps(t2)
 	if n < 0 {
 		n = -n
 	}
