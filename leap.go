@@ -2,7 +2,7 @@ package leap
 
 import "time"
 
-// A list of all two-second long POSIX timestamps that cross a leap second
+// A list of all two-second long POSIX timestamps that cross a leap second.
 var Seconds = []int64{
 	time.Date(2015, 06, 30, 23, 59, 59, 0, time.UTC).Unix(),
 	time.Date(2012, 06, 30, 23, 59, 59, 0, time.UTC).Unix(),
@@ -32,8 +32,8 @@ var Seconds = []int64{
 	time.Date(1972, 06, 30, 23, 59, 59, 0, time.UTC).Unix(),
 }
 
-// Count the number of leap seconds that occured before this Time
-func LeapCount(t time.Time) int {
+// Get the number of leap seconds that occured before this time.
+func NumLeaps(t time.Time) int {
 	u := t.Unix()
 	for i, s := range Seconds {
 		if u > s {
@@ -43,8 +43,8 @@ func LeapCount(t time.Time) int {
 	return 0
 }
 
-// Number of leapseconds that occured between two times
-func NumLeaps(t1 time.Time, t2 time.Time) int {
+// Get the number of leapseconds that occured between two times.
+func LeapDiff(t1 time.Time, t2 time.Time) int {
 	n := LeapCount(t1) - LeapCount(t2)
 	if n < 0 {
 		n = -n
