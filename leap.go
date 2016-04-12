@@ -3,7 +3,7 @@ package leap
 
 import "time"
 
-// A list of all two-second long POSIX timestamps that cross a leap second.
+// A list of all two-second-long POSIX timestamps that cross a leap second.
 var Seconds = []int64{
 	time.Date(2015, 06, 30, 23, 59, 59, 0, time.UTC).Unix(),
 	time.Date(2012, 06, 30, 23, 59, 59, 0, time.UTC).Unix(),
